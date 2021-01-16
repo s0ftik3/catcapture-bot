@@ -16,7 +16,8 @@ const {
     handleMessage,
     handleLanguage,
     handleReset,
-    handleSettings
+    handleSettings,
+    handleDebug
 } = require('./handlers');
 
 bot.use(session());
@@ -33,6 +34,7 @@ bot.action('sendPhoto', handleSettings());
 bot.action('sendDocument', handleSettings());
 bot.action('fullPage', handleSettings());
 bot.action('setDevice', handleSettings());
+bot.command('debug', handleDebug());
 bot.command('help', handleStart());
 bot.command('setlang', handleLanguage());
 bot.command('reset', handleReset());
