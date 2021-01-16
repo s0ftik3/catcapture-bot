@@ -1,5 +1,6 @@
 const User = require('../../database/models/User');
 const config = require('../../config.json');
+const mongoose = require('mongoose');
 
 module.exports = () => async (ctx) => {
 
@@ -19,7 +20,7 @@ module.exports = () => async (ctx) => {
         const usersNumber = await User.find().then(response => response.length);
         const dbConnectionStatus = connection[mongoose.connection.readyState];
 
-        ctx.reply(`Users: ${usersNumber}\nConnection status: ${dbConnectionStatus}\nLatency: ${new Date().getTime() - start_ts}`);
+        ctx.reply(`Users: ${usersNumber}\nConnection status: ${dbConnectionStatus}\nLatency: ${new Date().getTime() - start_ts}ms`);
 
     } catch (error) {
 
