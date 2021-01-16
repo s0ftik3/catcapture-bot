@@ -27,6 +27,10 @@ class WebEye {
      */
     validateDeviceDimensions(width, height) {
 
+        if (this.device != undefined && 
+            this.width != undefined || 
+            this.height != undefined) throw new Error('Failed validation: do not set image dimensions when device is chosen'); 
+
         // Check if dimensions less than the lowest available ones.
         if (width < 320 || height < 568) throw new Error('Failed validation: device dimensions cannot be less than 320px width and 568 height.');
             else return true;
