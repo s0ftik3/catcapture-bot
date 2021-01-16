@@ -17,7 +17,8 @@ const {
     handleLanguage,
     handleReset,
     handleSettings,
-    handleDebug
+    handleDebug,
+    handleCallback
 } = require('./handlers');
 
 bot.use(session());
@@ -40,7 +41,7 @@ bot.action(/setLangCustom:\w+/, handleLanguage());
 
 // Handling messages and callbacks.
 bot.on('message', handleMessage());
-bot.on('callback_query', (ctx) => ctx.answerCbQuery());
+bot.on('callback_query', handleCallback());
 
 bot.launch().then(() => {
     console.log('The bot has been started.');

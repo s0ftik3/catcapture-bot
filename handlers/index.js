@@ -4,5 +4,6 @@ module.exports = {
     handleLanguage: require('./settings/language'),
     handleReset: require('./admin/reset'),
     handleSettings: require('./settings/settings'),
-    handleDebug: require('./admin/debug')
+    handleDebug: require('./admin/debug'),
+    handleCallback: require('./callback')
 }
