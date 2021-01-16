@@ -42,6 +42,9 @@ module.exports = () => async (ctx) => {
         // Start imitate uploading.
         (sendPhoto) ? ctx.replyWithChatAction('upload_photo') : ctx.replyWithChatAction('upload_document');
 
+        // Log what url was requested.
+        console.log(`${ctx.from.id}: requested ${webpage.url} website.`);
+
         // Get an image.
         webeye.getScreenshot(webpage.url).then(async response => {
 
