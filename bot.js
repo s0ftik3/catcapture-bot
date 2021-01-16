@@ -24,11 +24,9 @@ const {
 bot.use(session());
 bot.use(i18n.middleware());
 
-// Beginning.
 bot.start(handleStart());
 bot.action(/setLang:\w+/, handleStart());
 
-// Rest.
 bot.hears(['⚙️ Settings', '⚙️ Настройки'], handleSettings());
 bot.action('language', handleSettings());
 bot.action('sendPhoto', handleSettings());
@@ -39,7 +37,6 @@ bot.command('debug', handleDebug());
 bot.command('reset', handleReset());
 bot.action(/setLangCustom:\w+/, handleLanguage());
 
-// Handling messages and callbacks.
 bot.on('message', handleMessage());
 bot.on('callback_query', handleCallback());
 
