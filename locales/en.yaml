@@ -9,32 +9,28 @@ service:
 
     📸 I am a Telegram bot that can *take a screenshot of any website* you send me.
     
-    ⚙️ *You can set me up as you wish, just use the according settings button below.*
+    ⚙️ *You can set me up as you wish by using a settings button below.*
 
-    💎 *If you want to support the maintaining of mine, click on «Donate» button below.*
+    💎 *If you want to support the maintaining of mine, tap on «Donate» button below.*
   first_try: 😼 _Let's get started! Send me any website's link and I will capture a screenshot of it for you._
   select_interface_lang: 🌍 *Select interface language:*
   language_changed:  ✅ _You successfully changed interface language._
   settings_msg: |
-    ⚙️ *On this page you're able to change all the available preferences.*
+    ℹ️ *On this page you're able to change all the available settings. There's a description of each button below (downward).*
 
-    — *Language 1️⃣:* _change interface language._
-
-    — *Send Photo 2️⃣:* _screenshot will be sent in type of photo._
-
-    — *Send Document 3️⃣:* _screenshot will be sent in type of document._
-
-    — *Full Page 4️⃣:* _screenshot will be taken in full-page-length._
-    
-    — *Set Device 5️⃣:* _choose between different devices. It changes a screenshot appearance._
-  image_too_long: 🐌 _The image is too long-size. Please, wait for upload..._
+    — *Language 1️⃣:* _this button changes interface language._
+    — *Send Photo 2️⃣:* _a screenshot will be sent as a photo (with compression)._
+    — *Send Document 3️⃣:* _a screenshot will be sent as a document (without compression)._
+    — *Full Page 4️⃣:* _a screenshot will be taken in full-page-length (respond time may increase)._
+    — *Set Device 5️⃣:* _this button changes a screenshot's size_
+  image_too_long: 🐌 _The screenshot is too long-size. Please, wait for uploading..._
   is_on_cooldown: 🕗 _Don't be in hurry. You've already made a request._
 
 error: 
   invalid_url: 😾 <i>Unfortunately,</i> <b><i>«${invalid_link}»</i></b> <i>doesn't look like a valid website link to me.</i>
   website_down: 🙀 _Oh, seems like the website is not working._
   other: 😿 _I am sorry, my paws made something wrong. Try another website link or contact_ @id160_._
-  docpic: 😿 You can't disable both photo & document.
+  docpic: 😿 You can't disable both options.
 
 button:
   add: ➕ Add in Group Chat
