@@ -31,6 +31,7 @@ error:
   website_down: 🙀 _Oh, seems like the website is not working._
   other: 😿 _I am sorry, my paws made something wrong. Try another website link or contact_ @id160_._
   docpic: 😿 You can't disable both options.
+  ip_address: 😿 _The webpage contains IP addresses. I can't reveal them._
 
 button:
   add: ➕ Add in Group Chat

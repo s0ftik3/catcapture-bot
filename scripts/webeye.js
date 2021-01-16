@@ -49,7 +49,7 @@ class WebEye {
         if (!url.match(/^http([s]?):\/\/.*/)) url = 'http://' + url.match(/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+/)[0];
     
         if (url.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gmi)) return { valid: true, url: url }
-            else return { valid: false, url: url} ;
+            else return { valid: false, url: url };
 
     }
 
@@ -73,7 +73,13 @@ class WebEye {
         await page.goto(url, {
             waitUntil: 'load',
             timeout: 0
-        })
+        });
+
+        // Check if the webpage contains IP addresses.
+        await page.content().then(data => {
+            let regex = /(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g;
+            if (data.match(regex) != null) throw new Error('CONTAIN_IP_ADDRESS: the webpage might contain IP addresses.');
+        });
 
         // Take and convert screenshot into base64.
         const base64 = await page.screenshot({ encoding: 'base64', fullPage: this.fullPage || false });
