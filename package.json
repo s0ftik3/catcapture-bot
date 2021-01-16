@@ -1,0 +1,26 @@
+{
+  "name": "catcapture-bot",
+  "version": "1.0.0",
+  "description": "Simple bot that makes a screenshot of given webpage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "screenshot",
+    "webpage"
+  ],
+  "author": "softik",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "image-size": "^0.9.3",
+    "mongoose": "^5.11.11",
+    "probe-image-size": "^6.0.0",
+    "puppeteer": "^5.5.0",
+    "telegraf": "^3.38.0",
+    "telegraf-i18n": "^6.6.0"
+  }
+}
