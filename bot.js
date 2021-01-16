@@ -35,8 +35,6 @@ bot.action('sendDocument', handleSettings());
 bot.action('fullPage', handleSettings());
 bot.action('setDevice', handleSettings());
 bot.command('debug', handleDebug());
-bot.command('help', handleStart());
-bot.command('setlang', handleLanguage());
 bot.command('reset', handleReset());
 bot.action(/setLangCustom:\w+/, handleLanguage());
 
