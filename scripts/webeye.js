@@ -58,7 +58,7 @@ class WebEye {
         this.validateDeviceDimensions(this.width || 1920, this.height || 1080);
 
         // Open browser & Set user preferences & Open target website & Take a screenshot
-        const browser = await puppeteer.launch({ args: ["--proxy-server='direct://'", '--proxy-bypass-list=*'] });
+        const browser = await puppeteer.launch({ args: ["--proxy-server='direct://'", '--proxy-bypass-list=*', '--no-sandbox'] });
         const page = await browser.newPage();
         await page.setViewport(devices[this.device] || {
             width: this.width || 1920,
