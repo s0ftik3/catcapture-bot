@@ -14,85 +14,71 @@ module.exports = () => async (ctx) => {
 
         if (ctx.updateType == 'message') {
 
-            User.find({ id: ctx.from.id }).then(response => {
+            let user = await User.find({ id: ctx.from.id }).then(response => response);
 
-                if (response.length <= 0) {
+            if (user.length <= 0) {
+                
+                user = null;
 
-                    // Create an array for the future buttons.
-                    const buttons = [];
+                const buttons = [];
+                const locales_folder = fs.readdirSync('./locales/');
+                locales_folder.forEach(file => {
 
-                    // Locate locales folder.
-                    const locales_folder = fs.readdirSync('./locales/');
+                    let localization = file.split('.')[0];
+                    buttons.push(
+                        Markup.callbackButton(i18n.t(localization, 'language'), `setLang:${localization}`)
+                    );
 
-                    // Create buttons of each localization.
-                    locales_folder.forEach(file => {
+                });
 
-                        let localization = file.split('.')[0];
-                        buttons.push(
-                            Markup.callbackButton(i18n.t(localization, 'language'), `setLang:${localization}`)
-                        );
-                        
-                    });
+                ctx.replyWithMarkdown('🌍 *Select interface language to continue:*', {
+                    reply_markup: Markup.inlineKeyboard(buttons, { columns: 2 })
+                });
 
-                    // Message that user will see.
-                    const message = '🌍 *Select interface language to continue:*';
+            } else {
 
-                    // Respond user.
-                    ctx.replyWithMarkdown(message, {
-                        reply_markup: Markup.inlineKeyboard(buttons, { columns: 2 })
-                    });
+                ctx.i18n.locale(user[0].language);
+                user = null;
 
-                } else {
+                ctx.replyWithMarkdown(ctx.i18n.t('service.greeting', {
+                    name: ctx.from.first_name
+                }), {
+                    reply_markup: Markup.inlineKeyboard([
+                        Markup.urlButton(
+                            ctx.i18n.t('button.donate'),
+                            `https://t.me/id160`
+                        )
+                    ])
+                });
 
-                    ctx.i18n.locale(response[0].language);
+            }
 
-                    // Respond user.
-                    ctx.replyWithMarkdown(ctx.i18n.t('greeting', {
-                        name: ctx.from.first_name
-                    }), { 
-                        reply_markup: Markup.inlineKeyboard([
-                            [Markup.urlButton(
-                                ctx.i18n.t('button.donate'),
-                                `https://t.me/id160`
-                            )]
-                        ]
-                      ) 
-                    });
-
-                }
-
-            });
-
-        } else if (ctx.updateType == 'callback_query') {
+        } else {
 
             const language = ctx.match[0].split(':')[1];
 
             ctx.i18n.locale(language);
-            // Respond user.
-            ctx.editMessageText(ctx.i18n.t('greeting', {
+            ctx.editMessageText(ctx.i18n.t('service.greeting', {
                 name: ctx.from.first_name
-            }),
-            { 
-                parse_mode: 'Markdown', 
+            }), {
+                parse_mode: 'Markdown',
                 reply_markup: Markup.inlineKeyboard([
-                    [Markup.urlButton(
+                    Markup.urlButton(
                         ctx.i18n.t('button.donate'),
                         `https://t.me/id160`
-                    )]
-                ]
-              ) 
+                    )
+                ])
             });
             ctx.answerCbQuery();
 
-            ctx.replyWithMarkdown(ctx.i18n.t('first_try'), Markup
-                .keyboard([
+            ctx.replyWithMarkdown(ctx.i18n.t('service.first_try'), 
+                Markup.keyboard([
                     [ctx.i18n.t('button.settings')]
                 ])
                 .resize()
                 .extra()
             );
 
-            // Add user to the database.
             const userData = {
                 id: ctx.from.id,
                 firstName: (ctx.from.first_name == undefined) ? null : ctx.from.first_name,

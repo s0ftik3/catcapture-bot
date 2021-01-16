@@ -24,16 +24,16 @@ module.exports = () => async (ctx) => {
 
         // List of devices.
         const devices = {
-            0: ctx.i18n.t('devices.pc'),
-            1: ctx.i18n.t('devices.laptop'),
-            2: ctx.i18n.t('devices.iphoneX'),
-            3: ctx.i18n.t('devices.iphone5')
+            0: ctx.i18n.t('device.pc'),
+            1: ctx.i18n.t('device.laptop'),
+            2: ctx.i18n.t('device.iphoneX'),
+            3: ctx.i18n.t('device.iphone5')
         };
 
         // Check type of request.
         if (ctx.updateType == 'message') {
 
-            ctx.replyWithMarkdown(ctx.i18n.t('settings_msg'), {
+            ctx.replyWithMarkdown(ctx.i18n.t('service.settings_msg'), {
                 reply_markup: Markup.inlineKeyboard([
                     [Markup.callbackButton(
                         ctx.i18n.t('button.language', {
@@ -94,7 +94,7 @@ module.exports = () => async (ctx) => {
                                     
                         });
         
-                        ctx.editMessageText(ctx.i18n.t('select_interface_lang'), {
+                        ctx.editMessageText(ctx.i18n.t('service.select_interface_lang'), {
                             parse_mode: 'Markdown',
                             reply_markup: Markup.inlineKeyboard(buttons.filter(e => e.callback_data != `setLangCustom:${language}`), { columns: 2 })
                         });
@@ -111,12 +111,12 @@ module.exports = () => async (ctx) => {
                         const currentCondition = response[0].sendPhoto; // true = send, false = not send.
                         const changeTo = (currentCondition) ? false : true;
 
-                        if (sendDocumentCondition == false && changeTo == false) return ctx.answerCbQuery(ctx.i18n.t('docpic_err'));
+                        if (sendDocumentCondition == false && changeTo == false) return ctx.answerCbQuery(ctx.i18n.t('error.docpic'));
 
                         User.updateOne({ id: ctx.from.id }, { $set: { sendPhoto: changeTo } }, () => {});
                         ctx.session.userData.sendPhoto = changeTo;
         
-                        ctx.editMessageText(ctx.i18n.t('settings_msg'), {
+                        ctx.editMessageText(ctx.i18n.t('service.settings_msg'), {
                             parse_mode: 'Markdown',
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
@@ -164,12 +164,12 @@ module.exports = () => async (ctx) => {
                         const currentCondition = response[0].sendDocument; // true = send, false = not send.
                         const changeTo = (currentCondition) ? false : true;
 
-                        if (sendPhotoCondition == false && changeTo == false) return ctx.answerCbQuery(ctx.i18n.t('docpic_err'));
+                        if (sendPhotoCondition == false && changeTo == false) return ctx.answerCbQuery(ctx.i18n.t('error.docpic'));
 
                         User.updateOne({ id: ctx.from.id }, { $set: { sendDocument: changeTo } }, () => {});
                         ctx.session.userData.sendDocument = changeTo;
         
-                        ctx.editMessageText(ctx.i18n.t('settings_msg'), {
+                        ctx.editMessageText(ctx.i18n.t('service.settings_msg'), {
                             parse_mode: 'Markdown',
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
@@ -219,7 +219,7 @@ module.exports = () => async (ctx) => {
                         User.updateOne({ id: ctx.from.id }, { $set: { fullPage: changeTo } }, () => {});
                         ctx.session.userData.fullPage = changeTo;
         
-                        ctx.editMessageText(ctx.i18n.t('settings_msg'), {
+                        ctx.editMessageText(ctx.i18n.t('service.settings_msg'), {
                             parse_mode: 'Markdown',
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
@@ -269,7 +269,7 @@ module.exports = () => async (ctx) => {
                         User.updateOne({ id: ctx.from.id }, { $set: { device: changeTo } }, () => {});
                         ctx.session.userData.device = changeTo;
         
-                        ctx.editMessageText(ctx.i18n.t('settings_msg'), {
+                        ctx.editMessageText(ctx.i18n.t('service.settings_msg'), {
                             parse_mode: 'Markdown',
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(

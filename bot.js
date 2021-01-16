@@ -9,40 +9,36 @@ const i18n = new TelegrafI18n({
     defaultLanguageOnMissing: true
 });
 
-const {
-    connect
-} = require('./database');
+const connect = require('./database/connect');
 
 const {
     handleStart,
     handleMessage,
     handleLanguage,
     handleReset,
-    handleSettings
+    handleSettings,
+    handleDebug,
+    handleCallback
 } = require('./handlers');
 
 bot.use(session());
 bot.use(i18n.middleware());
 
-// Beginning.
 bot.start(handleStart());
 bot.action(/setLang:\w+/, handleStart());
 
-// Rest.
 bot.hears(['⚙️ Settings', '⚙️ Настройки'], handleSettings());
 bot.action('language', handleSettings());
 bot.action('sendPhoto', handleSettings());
 bot.action('sendDocument', handleSettings());
 bot.action('fullPage', handleSettings());
 bot.action('setDevice', handleSettings());
-bot.command('help', handleStart());
-bot.command('setlang', handleLanguage());
+bot.command('debug', handleDebug());
 bot.command('reset', handleReset());
 bot.action(/setLangCustom:\w+/, handleLanguage());
 
-// Handling messages and callbacks.
 bot.on('message', handleMessage());
-bot.on('callback_query', (ctx) => ctx.answerCbQuery());
+bot.on('callback_query', handleCallback());
 
 bot.launch().then(() => {
     console.log('The bot has been started.');
