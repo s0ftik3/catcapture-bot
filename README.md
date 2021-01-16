@@ -1,10 +1,12 @@
 # Cat Capture Bot
-[![release](https://img.shields.io/badge/release-v1.2.2-green.svg?style=flat-square)]()
+[![release](https://img.shields.io/badge/release-v1.2.2-green.svg?style=flat)]()
+[![license](https://img.shields.io/github/license/s0ftik3/catcapture-bot)]()
+[![size](https://img.shields.io/github/languages/code-size/s0ftik3/catcapture-bot)]()
 
 Telegram description: 😺 Just a simple Telegram bot. 📸 I can capture screenshots of any website.
 
 ## About
-😺 The idea is simple: you received some odd link and don't want to go for it, but you're curious what it is. You can just copy the link and send it to the bot, in a couple of seconds the bot will send you a screenshot of the given website.
+😺 The idea is simple: you received some suspicious link and don't want to go for it but you're curious what it is. You can just copy the link and send it to the bot, in a couple of seconds the bot will send you a screenshot of the given website.
 
 ## How it works
 1) User passes a URL to the bot.
@@ -29,4 +31,4 @@ P.S. for those, who will run the bot on other platforms - https://github.com/pup
 ## Credits
 - Author [s0ftik3](https://github.com/s0ftik3)
 - Author on [Telegram](https://t.me/id160)
-- A huge thanks to [ChiggerChug](https://github.com/ChiggerChug) for [their solution](https://github.com/puppeteer/puppeteer/issues/1718#issuecomment-397532083) to boost webpage load speed.
+- A huge thanks to [ChiggerChug](https://github.com/ChiggerChug) for [their solution](https://github.com/puppeteer/puppeteer/issues/1718#issuecomment-397532083) to boost webpage's load speed.
