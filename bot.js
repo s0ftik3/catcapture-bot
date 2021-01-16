@@ -9,7 +9,7 @@ const i18n = new TelegrafI18n({
     defaultLanguageOnMissing: true
 });
 
-const connect = require('./database');
+const connect = require('./database/connect');
 
 const {
     handleStart,
