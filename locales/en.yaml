@@ -2,38 +2,39 @@ language: 🇬🇧 English
 
 # 💬 You can also *add me to a group chat* and I will send *previews of any link* that members send. 
 # ➕ *To add the bot in a group chat just use «Add in Group Chat» button below.*
-greeting: |
-  😺 Wow, you started me, *${name}*!
 
-  📸 I am a Telegram bot that can *take a screenshot of any website* you send me.
-  
-  ⚙️ *You can set me up as you wish, just use the according settings button below.*
+service:
+  greeting: |
+    😺 Wow, you started me, *${name}*!
 
-  💎 *If you want to support the maintaining of mine, click on «Donate» button below.*
+    📸 I am a Telegram bot that can *take a screenshot of any website* you send me.
+    
+    ⚙️ *You can set me up as you wish, just use the according settings button below.*
 
-first_try: 😼 _Let's get started! Send me any website's link and I will capture a screenshot of it for you._
+    💎 *If you want to support the maintaining of mine, click on «Donate» button below.*
+  first_try: 😼 _Let's get started! Send me any website's link and I will capture a screenshot of it for you._
+  select_interface_lang: 🌍 *Select interface language:*
+  language_changed:  ✅ _You successfully changed interface language._
+  settings_msg: |
+    ⚙️ *On this page you're able to change all the available preferences.*
 
-select_interface_lang: 🌍 *Select interface language:*
-settings_msg: |
-  ⚙️ *On this page you're able to change all the available preferences.*
+    — *Language 1️⃣:* _change interface language._
 
-  — *Language 1️⃣:* _change interface language._
+    — *Send Photo 2️⃣:* _screenshot will be sent in type of photo._
 
-  — *Send Photo 2️⃣:* _screenshot will be sent in type of photo._
+    — *Send Document 3️⃣:* _screenshot will be sent in type of document._
 
-  — *Send Document 3️⃣:* _screenshot will be sent in type of document._
+    — *Full Page 4️⃣:* _screenshot will be taken in full-page-length._
+    
+    — *Set Device 5️⃣:* _choose between different devices. It changes a screenshot appearance._
+  image_too_long: 🐌 _The image is too long-size. Please, wait for upload..._
+  is_on_cooldown: 🕗 _Don't be in hurry. You've already made a request._
 
-  — *Full Page 4️⃣:* _screenshot will be taken in full-page-length._
-  
-  — *Set Device 5️⃣:* _choose between different devices. It changes a screenshot appearance._
-language_changed:  ✅ _You successfully changed interface language._
-
-invalid_url: 😾 <i>Unfortunately,</i> <b><i>«${invalid_link}»</i></b> <i>doesn't look like a valid website link to me.</i>
-website_down: 🙀 _Oh, seems like the website is not working._
-error_msg: 😿 _I am sorry, my paws made something wrong. Try another website link or contact_ @id160_._
-image_too_long: 🐌 _The image is too long-size. Please, wait for upload..._
-is_on_cooldown: 🕗 _Don't be in hurry. You've already made a request._
-docpic_err: 😿 You can't disable both photo & document.
+error: 
+  invalid_url: 😾 <i>Unfortunately,</i> <b><i>«${invalid_link}»</i></b> <i>doesn't look like a valid website link to me.</i>
+  website_down: 🙀 _Oh, seems like the website is not working._
+  other: 😿 _I am sorry, my paws made something wrong. Try another website link or contact_ @id160_._
+  docpic: 😿 You can't disable both photo & document.
 
 button:
   add: ➕ Add in Group Chat
@@ -45,7 +46,7 @@ button:
   fullPage: Full Page ${fullPage_sign}
   setDevice: ${setDevice_sign}
 
-devices: 
+device: 
   pc: PC 🖥
   laptop: Laptop 💻
   iphoneX: iPhone X 📱
