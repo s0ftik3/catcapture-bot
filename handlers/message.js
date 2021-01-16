@@ -21,7 +21,7 @@ module.exports = () => async (ctx) => {
         const replyTo = { reply_to_message_id: ctx.update.message.message_id };
 
         // Check if the user floods.
-        if (cooldown(ctx.from.id)) return ctx.replyWithMarkdown(ctx.i18n.t('is_on_cooldown'), replyTo);
+        if (cooldown(ctx.from.id)) return ctx.replyWithMarkdown(ctx.i18n.t('service.is_on_cooldown'), replyTo);
 
         // Match an url.
         const url = ctx.message.text;
@@ -37,7 +37,7 @@ module.exports = () => async (ctx) => {
 
         // Check if the url is valid.
         const webpage = webeye.validateURL(url);
-        if (!webpage.valid) return ctx.replyWithHTML(ctx.i18n.t('invalid_url', { invalid_link: url }), { reply_to_message_id: ctx.update.message.message_id });
+        if (!webpage.valid) return ctx.replyWithHTML(ctx.i18n.t('error.invalid_url', { invalid_link: url }), { reply_to_message_id: ctx.update.message.message_id });
 
         // Start imitate uploading.
         (sendPhoto) ? ctx.replyWithChatAction('upload_photo') : ctx.replyWithChatAction('upload_document');
@@ -57,7 +57,7 @@ module.exports = () => async (ctx) => {
 
                 // Send waiting message & Start uploading a document.
                 let messageToDelete;
-                ctx.replyWithMarkdown(ctx.i18n.t('image_too_long')).then(data => messageToDelete = data.message_id);
+                ctx.replyWithMarkdown(ctx.i18n.t('service.image_too_long')).then(data => messageToDelete = data.message_id);
                 ctx.replyWithChatAction('upload_document');
                 return ctx.replyWithDocument({ source: image, filename: `${config.filename}.png` }, replyTo).then(() => ctx.deleteMessage(messageToDelete)); // Delete waiting message.
 
@@ -91,15 +91,15 @@ module.exports = () => async (ctx) => {
             const replyTo = { reply_to_message_id: ctx.update.message.message_id };
 
             // If the website is down.
-            if (err.message.match('NOT_RESOLVED')) return ctx.replyWithMarkdown(ctx.i18n.t('website_down'), replyTo);
-                else ctx.replyWithMarkdown(ctx.i18n.t('error_msg')), console.error(err);
+            if (err.message.match('NOT_RESOLVED')) return ctx.replyWithMarkdown(ctx.i18n.t('error.website_down'), replyTo);
+                else ctx.replyWithMarkdown(ctx.i18n.t('error.other')), console.error(err);
                 
         });
 
     } catch (err) {
 
         // In case of any other issues.
-        ctx.replyWithMarkdown(ctx.i18n.t('error_msg'));
+        ctx.replyWithMarkdown(ctx.i18n.t('error.other'));
         console.error(err);
 
     }

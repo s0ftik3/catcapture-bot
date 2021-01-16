@@ -40,7 +40,7 @@ module.exports = () => async (ctx) => {
                 ctx.i18n.locale(user[0].language);
                 user = null;
 
-                ctx.replyWithMarkdown(ctx.i18n.t('greeting', {
+                ctx.replyWithMarkdown(ctx.i18n.t('service.greeting', {
                     name: ctx.from.first_name
                 }), {
                     reply_markup: Markup.inlineKeyboard([
@@ -58,7 +58,7 @@ module.exports = () => async (ctx) => {
             const language = ctx.match[0].split(':')[1];
 
             ctx.i18n.locale(language);
-            ctx.editMessageText(ctx.i18n.t('greeting', {
+            ctx.editMessageText(ctx.i18n.t('service.greeting', {
                 name: ctx.from.first_name
             }), {
                 parse_mode: 'Markdown',
@@ -71,7 +71,7 @@ module.exports = () => async (ctx) => {
             });
             ctx.answerCbQuery();
 
-            ctx.replyWithMarkdown(ctx.i18n.t('first_try'), 
+            ctx.replyWithMarkdown(ctx.i18n.t('service.first_try'), 
                 Markup.keyboard([
                     [ctx.i18n.t('button.settings')]
                 ])

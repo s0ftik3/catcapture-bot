@@ -13,7 +13,7 @@ module.exports = () => async (ctx) => {
 
             ctx.deleteMessage();
 
-            ctx.replyWithMarkdown(ctx.i18n.t('language_changed'), Markup
+            ctx.replyWithMarkdown(ctx.i18n.t('service.language_changed'), Markup
                 .keyboard([
                     [ctx.i18n.t('button.settings')]
                 ])
