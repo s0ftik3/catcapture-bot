@@ -21,7 +21,9 @@ module.exports = () => async (ctx) => {
         const replyTo = { reply_to_message_id: ctx.update.message.message_id };
 
         // Check if the user floods.
-        if (cooldown(ctx.from.id)) return ctx.replyWithMarkdown(ctx.i18n.t('service.is_on_cooldown'), replyTo);
+        let checkUser = cooldown(ctx.from.id);
+        if (checkUser.banned) return ctx.replyWithMarkdown(ctx.i18n.t('service.banned'), replyTo);
+        if (checkUser.cooldown) return ctx.replyWithMarkdown(ctx.i18n.t('service.is_on_cooldown'), replyTo);
 
         // Match an url.
         const url = ctx.message.text;
