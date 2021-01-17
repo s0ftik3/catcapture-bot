@@ -1,6 +1,6 @@
 const madeRequestRecently = new Set();
 const banned = new Set();
-const config = require('../config.js').config;
+const config = require('../config.js').bot;
 
 let request = 0;
 
