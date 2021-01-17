@@ -21,8 +21,8 @@ To conclude with, I don't think it's too slow. For some people to load a webpage
 
 ## Creating your bot
 1) Create your own bot using [Bot Father](https://t.me/BotFather) and copy your brand-new bot's token.
-2) Paste the token in `bot.js`. Replace `process.env.TOKEN` (2nd line) to your token.
-3) The bot uses MongoDB. If you use another database providing platform, you should rewrite the code a little bit. However, if you use MongoDB as well as me, just replace `process.env.DATABASE` to your database URL in `database/connect.js` (4th line).
+2) Paste the token in `config.js`. Replace `process.env.TOKEN` (6th line) to your token.
+3) The bot uses MongoDB. If you use another database providing platform, you should rewrite the code a little bit. However, if you use MongoDB as well as me, just replace `process.env.DATABASE` to your database URL in `config.js` (7th line).
 4) The bot runs on Heroku, so you need to set buildpacks as well for Puppeteer's proper work. Go to Settings > Buildpacks in your Heroku dashboard and set this link https://github.com/jontewks/puppeteer-heroku-buildpack.
 5) Once you've done all those steps, you can launch your bot and enjoy it!
 
