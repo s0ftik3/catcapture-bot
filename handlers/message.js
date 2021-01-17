@@ -2,7 +2,7 @@ const WebEye = require('../scripts/webeye');
 const User = require('../database/models/User');
 const sizeOf = require('image-size');
 const cooldown = require('../scripts/cooldown');
-const config = require('../config.json');
+const config = require('../config.js').config;
 
 module.exports = () => async (ctx) => {
     try {
