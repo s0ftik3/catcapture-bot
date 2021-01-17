@@ -1,5 +1,5 @@
 const User = require('../../database/models/User');
-const config = require('../../config.json');
+const config = require('../../config.js').config;
 const mongoose = require('mongoose');
 
 module.exports = () => async (ctx) => {

@@ -1,5 +1,6 @@
 const Telegraf = require('telegraf');
-const bot = new Telegraf(process.env.TOKEN);
+const config = require('./config.js').config;
+const bot = new Telegraf(config.token);
 const session = require('telegraf/session');
 const path = require('path');
 const TelegrafI18n = require('telegraf-i18n');

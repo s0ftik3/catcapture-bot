@@ -1,4 +1,5 @@
 const madeRequestRecently = new Set();
+const config = require('../config.js').config;
 
 module.exports = (user) => {
 
@@ -13,7 +14,7 @@ module.exports = (user) => {
 
             madeRequestRecently.delete(user);
 
-        }, 4500);
+        }, config.cooldown);
 
         return false;
 
