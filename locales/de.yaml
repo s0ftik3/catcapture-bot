@@ -22,7 +22,7 @@ service:
     — *Gerät Einstellen 5️⃣:* _Diese Schaltfläche ändert die Größe eines Screenshots._
   image_too_long: 🐌 _Der Screenshot ist zu lang. Bitte warten Sie auf das Hochladen..._
   is_on_cooldown: 🕗 _Sei nicht in Eile. Sie haben bereits eine Anfrage gestellt._
-  banned: ⛔️ _Sie wurden für 3 Stunden gesperrt. Beim nächsten Mal keinen Spam versenden._
+  banned: ⛔️ _Sie wurden für ${hour}St gesperrt. Beim nächsten Mal keinen Spam versenden._
 
 error: 
   invalid_url: 😾 <i>Leider sieht</i> <b><i>«${invalid_link}»</i></b> <i>für mich nicht nach einem gültigen Website-Link aus.</i>

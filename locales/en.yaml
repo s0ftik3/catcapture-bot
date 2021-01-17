@@ -25,7 +25,7 @@ service:
     — *Set Device 5️⃣:* _this button changes a screenshot's size._
   image_too_long: 🐌 _The screenshot is too long-size. Please, wait for uploading..._
   is_on_cooldown: 🕗 _Don't be in hurry. You've already made a request._
-  banned: ⛔️ _You have been banned for 3h. Do not spam next time._
+  banned: ⛔️ _You have been banned for ${hour}h. Do not spam next time._
 
 error: 
   invalid_url: 😾 <i>Unfortunately,</i> <b><i>«${invalid_link}»</i></b> <i>doesn't look like a valid website link to me.</i>

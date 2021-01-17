@@ -2,6 +2,7 @@ const WebEye = require('../scripts/webeye');
 const User = require('../database/models/User');
 const sizeOf = require('image-size');
 const cooldown = require('../scripts/cooldown');
+const convertToHours = require('../scripts/convertToHours');
 const config = require('../config.js').bot;
 
 module.exports = () => async (ctx) => {
@@ -22,7 +23,7 @@ module.exports = () => async (ctx) => {
 
         // Check if the user floods.
         let checkUser = cooldown(ctx.from.id);
-        if (checkUser.banned) return ctx.replyWithMarkdown(ctx.i18n.t('service.banned'), replyTo);
+        if (checkUser.banned) return ctx.replyWithMarkdown(ctx.i18n.t('service.banned', { hour: convertToHours(config.ban) }), replyTo);
         if (checkUser.cooldown) return ctx.replyWithMarkdown(ctx.i18n.t('service.is_on_cooldown'), replyTo);
 
         // Match an url.
