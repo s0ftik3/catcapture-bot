@@ -44,6 +44,7 @@ button:
   sendDocument: Отправлять документ ${sendDocument_sign}
   fullPage: Целая страница ${fullPage_sign}
   setDevice: ${setDevice_sign}
+  back: « Назад
 
 device: 
   pc: Компьютер 🖥

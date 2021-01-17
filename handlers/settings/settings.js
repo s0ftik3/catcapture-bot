@@ -95,9 +95,12 @@ module.exports = () => async (ctx) => {
                                     
                         });
         
+                        let keyboard = buttons.filter(e => e.callback_data != `setLangCustom:${language}`);
+                        keyboard.push({ text: ctx.i18n.t('button.back'), callback_data: 'back' });
+
                         ctx.editMessageText(ctx.i18n.t('service.select_interface_lang'), {
                             parse_mode: 'Markdown',
-                            reply_markup: Markup.inlineKeyboard(buttons.filter(e => e.callback_data != `setLangCustom:${language}`), { columns: 2 })
+                            reply_markup: Markup.inlineKeyboard(keyboard, { columns: 2 })
                         });
         
                     });
@@ -309,6 +312,46 @@ module.exports = () => async (ctx) => {
                         ctx.answerCbQuery();
 
                     });
+                    break;
+
+                case 'back':
+                    ctx.editMessageText(ctx.i18n.t('service.settings_msg'), {
+                        parse_mode: 'Markdown',
+                        reply_markup: Markup.inlineKeyboard([
+                            [Markup.callbackButton(
+                                ctx.i18n.t('button.language', {
+                                    lang_code: language[ctx.session.userData.language]
+                                }),
+                                'language'
+                            )],
+                            [Markup.callbackButton(
+                                ctx.i18n.t('button.sendPhoto', {
+                                    sendPhoto_sign: (ctx.session.userData.sendPhoto) ? '✅' : '❌'
+                                }),
+                                'sendPhoto'
+                            )],
+                            [Markup.callbackButton(
+                                ctx.i18n.t('button.sendDocument', {
+                                    sendDocument_sign: (ctx.session.userData.sendDocument) ? '✅' : '❌'
+                                }),
+                                'sendDocument'
+                            )],
+                            [Markup.callbackButton(
+                                ctx.i18n.t('button.fullPage', {
+                                    fullPage_sign: (ctx.session.userData.fullPage) ? '✅' : '❌'
+                                }),
+                                'fullPage'
+                            )],
+                            [Markup.callbackButton(
+                                ctx.i18n.t('button.setDevice', {
+                                    setDevice_sign: devices[ctx.session.userData.device]
+                                }),
+                                'setDevice'
+                            )]
+                        ])
+                    });
+                    ctx.answerCbQuery();
+
                     break;
 
             }

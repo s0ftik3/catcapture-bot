@@ -34,6 +34,7 @@ bot.action('sendPhoto', handleSettings());
 bot.action('sendDocument', handleSettings());
 bot.action('fullPage', handleSettings());
 bot.action('setDevice', handleSettings());
+bot.action('back', handleSettings());
 bot.command('debug', handleDebug());
 bot.command('reset', handleReset());
 bot.action(/setLangCustom:\w+/, handleLanguage());
