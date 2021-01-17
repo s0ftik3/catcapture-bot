@@ -75,11 +75,11 @@ class WebEye {
             timeout: 0
         });
 
-        // Check if the webpage contains IP addresses.
-        await page.content().then(data => {
-            let regex = /(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g;
-            if (data.match(regex) != null) throw new Error('CONTAIN_IP_ADDRESS: the webpage might contain IP addresses.');
-        });
+        // // Check if the webpage contains IP addresses.
+        // await page.content().then(data => {
+        //     let regex = /(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g;
+        //     if (data.match(regex) != null) throw new Error('CONTAIN_IP_ADDRESS: the webpage might contain IP addresses.');
+        // });
 
         // Take and convert screenshot into base64.
         const base64 = await page.screenshot({ encoding: 'base64', fullPage: this.fullPage || false });
