@@ -2,6 +2,7 @@
 
 const puppeteer = require('puppeteer');
 const publicIp = require('public-ip');
+const config = require('../config').bot;
 
 const devices = {
     0: { width: 1920, height: 1080 }, // FullHD PC
@@ -72,8 +73,8 @@ class WebEye {
             height: this.height || 1080
         });
         await page.goto(url, {
-            waitUntil: 'load',
-            timeout: 0
+            waitUntil: 'domcontentloaded',
+            timeout: config.timeout
         });
 
         // Check if the webpage contains the server's IP-address.

@@ -30,6 +30,7 @@ error:
   other: 😿 _Es tut mir leid, meine Pfoten haben etwas falsch gemacht. Versuchen Sie es mit einem anderen Website-Link oder wenden Sie sich an_ @id160_._
   docpic: 😿 Sie können nicht beide Optionen deaktivieren.
   ip_address: 😿 _Die Webseite enthält meine IP-Adresse. Ich will es nicht verraten._
+  timeout: 😿 _Ich kann nicht so lange auf diese Website warten. Versuchen Sie es mit einem anderen._
 
 button:
   add: ➕ Add in Group Chat

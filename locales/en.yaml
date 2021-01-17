@@ -33,6 +33,7 @@ error:
   other: 😿 _I am sorry, my paws made something wrong. Try another website link or contact_ @id160_._
   docpic: 😿 You can't disable both options.
   ip_address: 😿 _The webpage contains my IP-address. I don't want to reveal it._
+  timeout: 😿 _I can't wait so long for this website. Try another one._
 
 button:
   add: ➕ Add in Group Chat

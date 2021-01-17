@@ -96,6 +96,7 @@ module.exports = () => async (ctx) => {
             // If the website is down.
             if (err.message.match('NOT_RESOLVED')) return ctx.replyWithMarkdown(ctx.i18n.t('error.website_down'), replyTo);
                 else if (err.message.match('CONTAIN_IP_ADDRESS')) ctx.replyWithMarkdown(ctx.i18n.t('error.ip_address'));
+                else if (err.message.match('timeout')) ctx.replyWithMarkdown(ctx.i18n.t('error.timeout'));
                 else ctx.replyWithMarkdown(ctx.i18n.t('error.other')), console.error(err);
                 
         });
