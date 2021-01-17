@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../config.js').config;
+const config = require('../config.js').bot;
 
 module.exports = () => { 
     mongoose.connect(config.database, {

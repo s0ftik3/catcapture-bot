@@ -1,22 +1,46 @@
 const madeRequestRecently = new Set();
-const config = require('../config.js').config;
+const banned = new Set();
+const config = require('../config.js').bot;
+
+let request = 0;
 
 module.exports = (user) => {
 
+    if (request > 10) {
+     
+        banned.add(user);
+        setTimeout(() => {
+
+            banned.delete(user);
+            request = 0;
+
+        }, config.ban);
+
+    }
+
+    if (banned.has(user)) {
+
+        return { cooldown: false, banned: true };
+
+    }
+
     if (madeRequestRecently.has(user)) {
 
-        return true;
+        request++;
+        return { cooldown: true, banned: false };
 
     } else {
 
         madeRequestRecently.add(user);
+        request++;
         setTimeout(() => {
 
             madeRequestRecently.delete(user);
+            request = 0;
 
         }, config.cooldown);
 
-        return false;
+        return { cooldown: false, banned: false };
 
     }
 

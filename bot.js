@@ -1,5 +1,5 @@
 const Telegraf = require('telegraf');
-const config = require('./config.js').config;
+const config = require('./config.js').bot;
 const bot = new Telegraf(config.token);
 const session = require('telegraf/session');
 const path = require('path');
@@ -28,7 +28,7 @@ bot.use(i18n.middleware());
 bot.start(handleStart());
 bot.action(/setLang:\w+/, handleStart());
 
-bot.hears(['⚙️ Settings', '⚙️ Настройки'], handleSettings());
+bot.hears(['⚙️ Settings', '⚙️ Настройки', '⚙️ Einstellungen'], handleSettings());
 bot.action('language', handleSettings());
 bot.action('sendPhoto', handleSettings());
 bot.action('sendDocument', handleSettings());

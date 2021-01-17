@@ -1,0 +1,48 @@
+language: 🇩🇪 Deutsche
+
+service:
+  greeting: |
+    😺 Wow, du hast mich angefangen, *${name}*!
+
+    📸 Ich bin ein Telegramm-Bot, der *einen Screenshot von jeder Website* machen kann, die Sie mir senden.
+    
+    ⚙️ *Sie können mich nach Ihren Wünschen einrichten, indem Sie unten eine Einstellungsschaltfläche verwenden.*
+
+    💎 *Wenn Sie meine Wartung unterstützen möchten, tippen Sie unten auf die Schaltfläche «Spenden».*
+  first_try: 😼 _Los geht's! Senden Sie mir den Link einer Website und ich werde einen Screenshot davon für Sie aufnehmen._
+  select_interface_lang: 🌍 *Wählen Sie die Sprache der Benutzeroberfläche:*
+  language_changed:  ✅ _Sie haben die Schnittstellensprache erfolgreich geändert._
+  settings_msg: |
+    ℹ️ *Auf dieser Seite können Sie alle verfügbaren Einstellungen ändern. Es gibt eine Beschreibung jeder Schaltfläche unten (nach unten).*
+
+    — *Sprache 1️⃣:* _Diese Schaltfläche ändert die Sprache der Benutzeroberfläche._
+    — *Foto Senden 2️⃣:* _Ein Screenshot wird als Foto gesendet (mit Komprimierung)._
+    — *Dokument Senden 3️⃣:* _Ein Screenshot wird als Dokument gesendet (ohne Komprimierung)._
+    — *Ganze Seite 4️⃣:* _Ein Screenshot wird in voller Seitenlänge aufgenommen (Antwortzeit kann sich verlängern)._
+    — *Gerät Einstellen 5️⃣:* _Diese Schaltfläche ändert die Größe eines Screenshots._
+  image_too_long: 🐌 _Der Screenshot ist zu lang. Bitte warten Sie auf das Hochladen..._
+  is_on_cooldown: 🕗 _Sei nicht in Eile. Sie haben bereits eine Anfrage gestellt._
+  banned: ⛔️ _Sie wurden für ${hour}St gesperrt. Beim nächsten Mal keinen Spam versenden._
+
+error: 
+  invalid_url: 😾 <i>Leider sieht</i> <b><i>«${invalid_link}»</i></b> <i>für mich nicht nach einem gültigen Website-Link aus.</i>
+  website_down: 🙀 _Oh, anscheinend funktioniert die Website nicht._
+  other: 😿 _Es tut mir leid, meine Pfoten haben etwas falsch gemacht. Versuchen Sie es mit einem anderen Website-Link oder wenden Sie sich an_ @id160_._
+  docpic: 😿 Sie können nicht beide Optionen deaktivieren.
+  ip_address: 😿 _Die Webseite enthält IP-Adressen. Ich kann sie nicht verraten._
+
+button:
+  add: ➕ Add in Group Chat
+  donate: 💎 Spenden
+  settings: ⚙️ Einstellungen
+  language: Sprache ${lang_code}
+  sendPhoto: Foto Senden ${sendPhoto_sign}
+  sendDocument: Dokument Senden ${sendDocument_sign}
+  fullPage: Ganze Seite ${fullPage_sign}
+  setDevice: ${setDevice_sign}
+
+device: 
+  pc: PC 🖥
+  laptop: Laptop 💻
+  iphoneX: iPhone X 📱
+  iphone5: iPhone 5/SE ☎️
