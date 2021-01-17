@@ -8,6 +8,7 @@ const i18n = new TelegrafI18n({
     defaultLanguage: 'en',
     defaultLanguageOnMissing: true
 });
+const language = require('../../config.js').languages;
 
 module.exports = () => async (ctx) => {
     try {
@@ -37,7 +38,7 @@ module.exports = () => async (ctx) => {
                 reply_markup: Markup.inlineKeyboard([
                     [Markup.callbackButton(
                         ctx.i18n.t('button.language', {
-                            lang_code: (ctx.session.userData.language == 'en') ? '🇬🇧' : '🇷🇺'
+                            lang_code: language[ctx.session.userData.language]
                         }),
                         'language'
                     )],
@@ -121,7 +122,7 @@ module.exports = () => async (ctx) => {
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
                                     ctx.i18n.t('button.language', {
-                                        lang_code: (response[0].language == 'en') ? '🇬🇧' : '🇷🇺'
+                                        lang_code: language[ctx.session.userData.language]
                                     }),
                                     'language'
                                 )],
@@ -174,7 +175,7 @@ module.exports = () => async (ctx) => {
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
                                     ctx.i18n.t('button.language', {
-                                        lang_code: (response[0].language == 'en') ? '🇬🇧' : '🇷🇺'
+                                        lang_code: language[ctx.session.userData.language]
                                     }),
                                     'language'
                                 )],
@@ -224,7 +225,7 @@ module.exports = () => async (ctx) => {
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
                                     ctx.i18n.t('button.language', {
-                                        lang_code: (response[0].language == 'en') ? '🇬🇧' : '🇷🇺'
+                                        lang_code: language[ctx.session.userData.language]
                                     }),
                                     'language'
                                 )],
@@ -274,7 +275,7 @@ module.exports = () => async (ctx) => {
                             reply_markup: Markup.inlineKeyboard([
                                 [Markup.callbackButton(
                                     ctx.i18n.t('button.language', {
-                                        lang_code: (response[0].language == 'en') ? '🇬🇧' : '🇷🇺'
+                                        lang_code: language[ctx.session.userData.language]
                                     }),
                                     'language'
                                 )],

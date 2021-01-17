@@ -28,7 +28,7 @@ bot.use(i18n.middleware());
 bot.start(handleStart());
 bot.action(/setLang:\w+/, handleStart());
 
-bot.hears(['⚙️ Settings', '⚙️ Настройки'], handleSettings());
+bot.hears(['⚙️ Settings', '⚙️ Настройки', '⚙️ Einstellungen'], handleSettings());
 bot.action('language', handleSettings());
 bot.action('sendPhoto', handleSettings());
 bot.action('sendDocument', handleSettings());

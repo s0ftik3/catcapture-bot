@@ -8,5 +8,10 @@ module.exports = {
         "admin": 511695340, // Telegram ID.
         "filename": "@CatCaptureBot", // A user will see it when the bot sends a document.
         "cooldown": 4500 // in ms.
+    },
+    languages: {
+        "en": "🇬🇧",
+        "ru": "🇷🇺",
+        "de": "🇩🇪"
     }
 }
