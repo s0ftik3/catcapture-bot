@@ -2,7 +2,7 @@ module.exports = {
     bot: {
         "name": "Cat Capture",
         "bot": "@catcapturebot",
-        "version": "1.5.0", 
+        "version": "1.5.1", 
         "token": process.env.TOKEN,
         "database": process.env.DATABASE, 
         "admin": 511695340, // Telegram ID.
