@@ -55,19 +55,19 @@ module.exports = () => async (ctx) => {
             const image = Buffer.from(response, 'base64');
             const dimensions = sizeOf(image);
 
-            // Telegram has limits so check it.
-            if ((dimensions.height + dimensions.width) > 10000) {
-
-                // Send waiting message & Start uploading a document.
-                let messageToDelete;
-                ctx.replyWithMarkdown(ctx.i18n.t('service.image_too_long')).then(data => messageToDelete = data.message_id);
-                ctx.replyWithChatAction('upload_document');
-                return ctx.replyWithDocument({ source: image, filename: `${config.filename}.png` }, replyTo).then(() => ctx.deleteMessage(messageToDelete)); // Delete waiting message.
-
-            }
-
             // According to the user's preferences send a respond.
             if (sendPhoto) {
+
+                // Telegram has limits so check it.
+                if ((dimensions.height + dimensions.width) > 10000) {
+
+                    // Send waiting message & Start uploading a document.
+                    let messageToDelete;
+                    ctx.replyWithMarkdown(ctx.i18n.t('service.image_too_long')).then(data => messageToDelete = data.message_id);
+                    ctx.replyWithChatAction('upload_document');
+                    return ctx.replyWithDocument({ source: image, filename: `${config.filename}.png` }, replyTo).then(() => ctx.deleteMessage(messageToDelete)); // Delete waiting message.
+
+                }
 
                 await ctx.replyWithPhoto({ source: image }, replyTo).then(data => {
 
