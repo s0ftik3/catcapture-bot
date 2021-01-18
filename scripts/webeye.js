@@ -90,6 +90,8 @@ class WebEye {
         await browser.close();
 
         // Return an image in base64.
+        const memoryUsed = process.memoryUsage().heapUsed / 1024 / 1024;
+        console.log(`Memory used: ${Math.round(memoryUsed)}Mb`);
         return base64;
 
     }
