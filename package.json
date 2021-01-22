@@ -1,6 +1,6 @@
 {
   "name": "catcapture-bot",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Simple bot that makes a screenshot of given webpage.",
   "main": "index.js",
   "scripts": {

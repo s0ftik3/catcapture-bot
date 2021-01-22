@@ -40,22 +40,6 @@ class WebEye {
     }
 
     /**
-     * Validation of target url. It should have standart syntax. (i.e. starts with http(s)://)
-     * @public
-     * @param {String} url Target website's url.
-     */
-    validateURL(url) {
-
-        if (url.match(/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+/) == null) return { valid: false, url: url };
-
-        if (!url.match(/^http([s]?):\/\/.*/)) url = 'http://' + url.match(/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+/)[0];
-    
-        if (url.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gmi)) return { valid: true, url: url }
-            else return { valid: false, url: url };
-
-    }
-
-    /**
      * Get a screenshot of target website.
      * @public
      * @param {String} url Target website's url.

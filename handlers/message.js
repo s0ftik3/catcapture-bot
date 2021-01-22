@@ -26,30 +26,30 @@ module.exports = () => async (ctx) => {
         if (checkUser.banned) return ctx.replyWithMarkdown(ctx.i18n.t('service.banned', { hour: convertToHours(config.ban) }), replyTo);
         if (checkUser.cooldown) return ctx.replyWithMarkdown(ctx.i18n.t('service.is_on_cooldown'), replyTo);
 
-        // Match an url.
-        const url = ctx.message.text;
+        // Match an url and fix it if needed.
+        const condition = (ctx.message.text > 32) ? ctx.message.text.slice(0, 64) + '...' : ctx.message.text;
+        if (ctx.message.entities == undefined) return ctx.replyWithHTML(ctx.i18n.t('error.invalid_url', { invalid_link: condition }), replyTo);
+        let url = ctx.message.entities.filter(e => e.type === 'url').map(e => e.url || ctx.message.text.slice(e.offset, (e.offset + e.length)));
+        if (url.length > 1) url = url[0];
+        if (!url.toString().match(/^http([s]?):\/\/.*/)) url = 'http://' + url.toString().match(/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+/)[0];
 
         // Match a user preferences.
         const device = ctx.session.userData.device;
         const fullPage = ctx.session.userData.fullPage;
         const sendDocument = ctx.session.userData.sendDocument;
         const sendPhoto = ctx.session.userData.sendPhoto;
-
+        
         // Set all the user's preferences.
         const webeye = new WebEye({ fullPage: fullPage, device: device });
-
-        // Check if the url is valid.
-        const webpage = webeye.validateURL(url);
-        if (!webpage.valid) return ctx.replyWithHTML(ctx.i18n.t('error.invalid_url', { invalid_link: url }), { reply_to_message_id: ctx.update.message.message_id });
 
         // Start imitate uploading.
         (sendPhoto) ? ctx.replyWithChatAction('upload_photo') : ctx.replyWithChatAction('upload_document');
 
         // Log what url was requested.
-        console.log(`${ctx.from.id}: requested ${webpage.url} website.`);
+        console.log(`${ctx.from.id}: requested ${url} website.`);
 
         // Get an image.
-        webeye.getScreenshot(webpage.url).then(async response => {
+        webeye.getScreenshot(url).then(async response => {
 
             // Convert base64 to image & get its dimensions.
             const image = Buffer.from(response, 'base64');
