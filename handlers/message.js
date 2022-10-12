@@ -30,7 +30,7 @@ module.exports = () => async (ctx) => {
         const condition = (ctx.message.text > 32) ? ctx.message.text.slice(0, 64) + '...' : ctx.message.text;
         if (ctx.message.entities == undefined) return ctx.replyWithHTML(ctx.i18n.t('error.invalid_url', { invalid_link: condition }), replyTo);
         let url = ctx.message.entities.filter(e => e.type === 'url').map(e => e.url || ctx.message.text.slice(e.offset, (e.offset + e.length)));
-        if (url.length > 1) url = url[0];
+        if (url.length >= 1) url = url[0];
         if (!url.toString().match(/^http([s]?):\/\/.*/)) url = 'http://' + url.toString().match(/[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+/)[0];
 
         // Match a user preferences.
