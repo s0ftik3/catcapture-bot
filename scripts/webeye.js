@@ -57,7 +57,7 @@ class WebEye {
             height: this.height || 1080
         });
         await page.goto(url, {
-            waitUntil: 'domcontentloaded',
+            waitUntil: 'networkidle2',
             timeout: config.timeout
         });
 
